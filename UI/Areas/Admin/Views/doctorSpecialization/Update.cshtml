@@ -1,0 +1,39 @@
+﻿@model DoctorSpecializationModel
+
+@{
+	var exists = Model != null && Model.Id != 0;
+	ViewBag.Title = (exists ? "Редактирование" : "Создание") + " DoctorSpecialization";
+}
+
+<form asp-action="Update" asp-antiforgery="true" method="post">
+	<div class="row">
+		<input type="hidden" asp-for="Id"/>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="DoctorId"></label>
+				<input type="text" asp-for="DoctorId" class="form-control"/>
+				<span asp-validation-for="DoctorId" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="SpecializationId"></label>
+				<input type="text" asp-for="SpecializationId" class="form-control"/>
+				<span asp-validation-for="SpecializationId" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="YearsOfExperience"></label>
+				<input type="text" asp-for="YearsOfExperience" class="form-control"/>
+				<span asp-validation-for="YearsOfExperience" class="text-danger"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<button class="btn btn-outline-primary" type="submit">@(exists ? "Сохранить" : "Добавить")</button>
+			<a asp-action="Index" class="btn btn-outline-secondary">Отмена</a>
+		</div>
+	</div>
+</form>

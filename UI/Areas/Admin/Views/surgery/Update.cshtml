@@ -1,0 +1,74 @@
+﻿@model SurgeryModel
+
+@{
+	var exists = Model != null && Model.Id != 0;
+	ViewBag.Title = (exists ? "Редактирование" : "Создание") + " Surgery";
+}
+
+<form asp-action="Update" asp-antiforgery="true" method="post">
+	<div class="row">
+		<input type="hidden" asp-for="Id"/>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="PatientId"></label>
+				<input type="text" asp-for="PatientId" class="form-control"/>
+				<span asp-validation-for="PatientId" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="ScheduledDateTime"></label>
+				<input type="text" asp-for="ScheduledDateTime" class="form-control"/>
+				<span asp-validation-for="ScheduledDateTime" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="StartTime"></label>
+				<input type="text" asp-for="StartTime" class="form-control"/>
+				<span asp-validation-for="StartTime" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="EndTime"></label>
+				<input type="text" asp-for="EndTime" class="form-control"/>
+				<span asp-validation-for="EndTime" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="SurgeryType"></label>
+				<input type="text" asp-for="SurgeryType" class="form-control"/>
+				<span asp-validation-for="SurgeryType" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="SurgicalProcedureDescription"></label>
+				<input type="text" asp-for="SurgicalProcedureDescription" class="form-control"/>
+				<span asp-validation-for="SurgicalProcedureDescription" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="Emergency"></label>
+				<input type="checkbox" asp-for="Emergency" class="form-control"/>
+				<span asp-validation-for="Emergency" class="text-danger"></span>
+			</div>
+		</div>
+		<div class="col-md-4 col-sm-6">
+			<div class="form-group">
+				<label asp-for="IsDeleted"></label>
+				<input type="checkbox" asp-for="IsDeleted" class="form-control"/>
+				<span asp-validation-for="IsDeleted" class="text-danger"></span>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<button class="btn btn-outline-primary" type="submit">@(exists ? "Сохранить" : "Добавить")</button>
+			<a asp-action="Index" class="btn btn-outline-secondary">Отмена</a>
+		</div>
+	</div>
+</form>
